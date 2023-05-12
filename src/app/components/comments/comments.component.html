@@ -1,0 +1,7 @@
+<strong class="d-block mb-3">Comentários:</strong>
+<ul class="comments">
+  <li *ngFor="let comment of comments">
+    <strong class="d-block">{{ comment.email }}</strong>
+    <p>{{ comment.body }}</p>
+  </li>
+</ul>  

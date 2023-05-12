@@ -1,0 +1,8 @@
+tr[ng-reflect-router-link] {
+  cursor: pointer;
+  transition: .25s;
+
+  &:hover {
+    background: rgba(0, 0, 0, .025);
+  }
+}

@@ -1,0 +1,15 @@
+<strong mat-dialog-title>Tem certeza que deseja apagar o seguinte post?</strong>
+<div mat-dialog-content>
+  <p>{{ data.post.title }}</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Voltar</button>
+  <button 
+    mat-flat-button 
+    color="warn" 
+    cdkFocusInitial
+    (click)="confirmDeletePost()"
+  >
+    Apagar
+  </button>
+</div>

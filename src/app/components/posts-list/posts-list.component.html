@@ -1,0 +1,22 @@
+<mat-accordion>
+  <mat-expansion-panel 
+    *ngFor="let post of listPosts"
+    (opened)="openPostDetails(post)" 
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ post.title }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ post.body }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <hr class="mt-1">
+    <mat-spinner *ngIf="isLoading" color="accent" diameter="32"></mat-spinner>
+    <app-comments [comments]="post.comments"></app-comments>
+    <mat-action-row>
+      <button mat-button color="warn" (click)="clickOnDeletePost(post)" >Apagar post</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

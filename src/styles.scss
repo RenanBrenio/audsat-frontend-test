@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary-palette: (
+ 100: #003040,
+ 500: #003040,
+ 700: #003040,
+ contrast: (
+   100: white,
+   500: white,
+   700: white,
+ )
+);
+
+$accent-palette: (
+ 100: #007839,
+ 500: #007839,
+ 700: #007839,
+ contrast: (
+   100: white,
+   500: white,
+   700: white,
+ )
+);
+
+$my-primary: mat.define-palette($primary-palette);
+$my-accent: mat.define-palette($accent-palette);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+));
+
+@include mat.all-component-themes($my-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text-center {
+  text-align: center;
+}
+
+h1,
+.fw-bold {
+  font-weight: 700;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  min-height: 1px;
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 18px;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+  --mat-mdc-form-field-label-transform: translateY( -26px) scale(var(--mat-mdc-form-field-floating-label-scale, 0.75));
+}
+
+div.mat-mdc-form-field-bottom-align::before {
+  height: auto;
+}
+
+.mat-expansion-panel {
+  .mat-expansion-panel-header {
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .mat-expansion-panel-header-title {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .mat-expansion-indicator {
+    line-height: 0;
+    margin-top: -3px;
+  }
+
+  .mat-content {
+    flex-direction: column;
+  }
+}
