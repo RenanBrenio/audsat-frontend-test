@@ -1,6 +1,6 @@
 # Renan Jaqueta - Audsat Frontend Test
 
-## Features implementadas
+## Principais recursos implementados
 - Listagem de usuários com paginação
 - Filtro de usuários usando queryParams
 - Página de detalhe do usuário
