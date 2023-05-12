@@ -1,4 +1,15 @@
-# AudsatFrontendTest
+# Renan Jaqueta - Audsat Frontend Test
+
+## Features implementadas
+- Listagem de usuários com paginação
+- Filtro de usuários usando queryParams
+- Página de detalhe do usuário
+- Listagem de posts do usuário
+- Listagem de comentários nos posts
+- Apagar posts
+- Responsividade
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
