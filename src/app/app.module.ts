@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -14,6 +15,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +44,7 @@ const MaterialComponents = [
   MatListModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatMenuModule,
 ]
 
 @NgModule({
@@ -59,6 +62,7 @@ const MaterialComponents = [
     DeletePostDialogComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,

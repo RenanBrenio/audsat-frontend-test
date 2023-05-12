@@ -1,37 +1,56 @@
 <header class="navbar">
   <div class="container py-3">
     <div class="row justify-content-between align-items-center">
-      <div class="col-auto">
-        <img src="/assets/logo.svg" width="214" height="60" />
+      <div class="col">
+        <img src="/assets/logo.svg" width="214" height="60" class="logo" />
       </div>
       <div class="col-auto">
-        <a 
-          routerLink=""
-          ariaCurrentWhenActive="page"
-          class="mx-2" 
-          mat-button
-          color="#fff"
-        >
-          Home
-        </a>
-        <a 
-          routerLink="/users"
-          ariaCurrentWhenActive="page"
-          class="mx-2" 
-          mat-button
-          color="#fff"
-        >
-          Users
-        </a>
-        <a 
-          routerLink="/logs"
-          ariaCurrentWhenActive="page"
-          class="mx-2" 
-          mat-button
-          color="#fff"
-        >
-          Logs
-        </a>
+        <div class="d-md-none">
+          <button color="white" mat-button [matMenuTriggerFor]="headerMenu">
+            <mat-icon aria-hidden="false" aria-label="Menu" fontIcon="menu"></mat-icon>
+            Menu
+          </button>
+          <mat-menu #headerMenu="matMenu" xPosition="before">
+            <a routerLink="" mat-menu-item>
+              Home
+            </a>
+            <a routerLink="/users" mat-menu-item>
+              Users
+            </a>
+            <a routerLink="/logs" mat-menu-item>
+              Logs
+            </a>
+          </mat-menu>
+        </div>
+        <div class="d-none d-md-block">
+          <a 
+            routerLink=""
+            ariaCurrentWhenActive="page"
+            class="mx-2" 
+            mat-button
+            color="#fff"
+          >
+            Home
+          </a>
+          <a 
+            routerLink="/users"
+            ariaCurrentWhenActive="page"
+            class="mx-2" 
+            mat-button
+            color="#fff"
+          >
+            Users
+          </a>
+          <a 
+            routerLink="/logs"
+            ariaCurrentWhenActive="page"
+            class="mx-2" 
+            mat-button
+            color="#fff"
+          >
+            Logs
+          </a>
+        </div>
       </div>
     </div>
   </div>

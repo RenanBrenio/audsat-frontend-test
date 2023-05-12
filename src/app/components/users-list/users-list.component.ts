@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, take } from 'rxjs';
 import { User } from './../../interfaces/users.interface';
 import { UsersService } from './../../services/users.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class UsersListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'username', 'email', 'phone'];
-  listUsers: User[] | undefined;
+  listUsers?: User[];
   isLoading: boolean = true
   hasError: boolean = false
   dataSource: any;
@@ -22,33 +22,45 @@ export class UsersListComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
   ngOnInit() {
-    this.usersService.getAllPosts()
-    .pipe(
-      take(1),
-      catchError(() => {
-        this.isLoading = false;
-        this.hasError = true;
-        this.listUsers = undefined;
 
-        let snackBarRef = this._snackBar.open('Ops... Nenhum usuário foi encontrado', 'Recarregar');
-        snackBarRef.afterDismissed().subscribe(() => location.reload());
-        
-        return [];
-      })
-    )
-    .subscribe(data => {
-      this.isLoading = false;
-      this.hasError = false;
-      this.listUsers = data
-      this.dataSource = new MatTableDataSource(this.listUsers)
-      this.dataSource.paginator = this.paginator;
-      // console.log(this.listUsers);
-    })
+    this.route.queryParams
+      .subscribe(params => {
+        const queryName = params['name'] ? `name=${params['name']}&` : ''
+        const queryUsername = params['username'] ? `username=${params['username']}&` : ''
+        const queryEmail = params['email'] ? `email=${params['email']}&` : ''
+
+        const query = '?' + (queryName + queryUsername + queryEmail).slice(0, -1)
+
+        this.usersService.getAllPosts(query)
+        .pipe(
+          take(1),
+          catchError(() => {
+            this.isLoading = false;
+            this.hasError = true;
+            this.listUsers = undefined;
+
+            let snackBarRef = this._snackBar.open('Ops... Nenhum usuário foi encontrado', 'Recarregar');
+            snackBarRef.afterDismissed().subscribe(() => location.reload());
+            
+            return [];
+          })
+        )
+        .subscribe(data => {
+          this.isLoading = false;
+          this.hasError = false;
+          this.listUsers = data
+          this.dataSource = new MatTableDataSource(this.listUsers)
+          this.dataSource.paginator = this.paginator;
+          // console.log(this.listUsers);
+        })
+      }
+    );
   }
 }

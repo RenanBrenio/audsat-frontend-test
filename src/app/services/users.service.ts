@@ -11,8 +11,8 @@ import { Comment } from '../interfaces/comments.interface';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  getAllPosts(): Observable<User[]> {
-    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users`);
+  getAllPosts(query?: string): Observable<User[]> {
+    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users${query}`);
   }
 
   getPostsFromUser(userId: number): Observable<Post[]> {

@@ -1,3 +1,10 @@
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+
 tr[ng-reflect-router-link] {
   cursor: pointer;
   transition: .25s;
